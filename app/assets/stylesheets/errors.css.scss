@@ -3,56 +3,61 @@
 @import "mixins";
 //= require_self
 
-.basic-head {
-  background-color: white;
-  clear: both;
-  height: 100px;
-  text-align: center;
-  .info.pull-right {
-    position: absolute;
-    right: 0;
-    top: 35px;
-    p.small {
-      font-size: 12px;
-      margin-top: 10px;
-      a {
-        color: $gray;
-        text-decoration: underline;
-        margin-left: 8px;
-        &:first-child {
-          margin-left: 0;
+body.error-page {
+  &.e404 {
+    @include full-background('404-bg.jpg'); 
+  }
+  &.e500 {
+    @include full-background('500-bg.jpg');
+  }
+  .basic-head {
+    background-color: white;
+    clear: both;
+    height: 100px;
+    text-align: center;
+    .info.pull-right {
+      position: absolute;
+      right: 0;
+      top: 35px;
+      p.small {
+        font-size: 12px;
+        margin-top: 10px;
+        a {
+          color: $gray;
+          text-decoration: underline;
+          margin-left: 8px;
+          &:first-child {
+            margin-left: 0;
+          }
         }
       }
     }
-  }
-  .simple-btn {
-    border: 2px solid $purple;
-    color: $purple;
-    padding: 15px;
-    border-radius: 6px;
-    font-size: 22px;
-    display: inline-block;
-    margin-top: 20px;
-    &:hover {
-      text-decoration: none;
-      background-color: $purple;
-      color: white;
+    .simple-btn {
+      border: 2px solid $purple;
+      color: $purple;
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 22px;
+      display: inline-block;
+      margin-top: 20px;
+      &:hover {
+        text-decoration: none;
+        background-color: $purple;
+        color: white;
+      }
+    }
+    .logo.pull-left {
+      position: absolute;
+      left: 0;
+      top: 20px;
     }
   }
-  .logo.pull-left {
-    position: absolute;
-    left: 0;
-    top: 20px;
+  .container {
+    width: 960px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
   }
-}
-.container {
-  width: 960px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-body.e404 {
-  @include full-background('404-bg.jpg');
   section.content {
     position: relative;
     z-index: 1;
@@ -62,7 +67,7 @@ body.e404 {
       color: white;
       padding: 30px;
       width: 360px;
-      height: 180px;
+      height: auto;
       position: absolute;
       left: 0;
       top: 50%;
@@ -79,8 +84,4 @@ body.e404 {
       }
     }
   }
-}
-
-body.e500 {
-  
 }
