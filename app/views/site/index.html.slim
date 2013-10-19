@@ -36,10 +36,6 @@ section
       .btn-row
         = link_to('Make a Video', '#', class: 'action scroll', 'data-page' => '3')
         = link_to('View Others', '#', class: 'action scroll', 'data-page' => '2')
-section.page2
-  .container
-    h2 Scenes
-section.page3
-  .container
-    h2 Your Scene
-  
+
+= render('scenes/index')
+= render('scenes/new')  
