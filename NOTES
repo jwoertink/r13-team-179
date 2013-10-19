@@ -1,13 +1,32 @@
 Profile:
   string :ip_address
   string :email
-  string :phone
-  string :video_url # may need to be it's own object?
+  string :video
+  string :url_key
   
   has_many :interests
+  mount_uploader :video, VideoUploader
   
 Interest:
   string :email
-  string :sex
+  string :gender
   integer :profile_id
   
+  add_index :interests, :profile_id
+  
+Question:
+  string :text
+  string :category
+  string :video
+  
+  mount_uploader :video, VideoUploader
+  
+Video:
+  question
+  video snippet
+  question
+  video snippet
+  question
+  video snippet
+  question
+  video snippet

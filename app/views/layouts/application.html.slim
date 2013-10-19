@@ -22,10 +22,16 @@ head
   = stylesheet_link_tag 'application', media: 'all', "data-turbolinks-track" => true
   = yield :stylesheets 
   /[if lt IE 9]
-    = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js' 
-  = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js' 
+    = javascript_cdn_tag 'html5shiv', '3.6.1' 
+  = javascript_cdn_tag 'modernizr', '2.6.2' 
   = yield :head
   
 body class="public"
-  = yield 
+  = yield(:hidden_nav)
+  #main.content
+    = yield 
+  = jquery_include_tag :google 
+  = javascript_cdn_tag 'swfobject', '2.2' 
   = javascript_include_tag "application", "data-turbolinks-track" => true
+  
+  

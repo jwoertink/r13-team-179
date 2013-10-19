@@ -1,1 +1,45 @@
-h1 hello
+- content_for(:hidden_nav) do
+  nav.hidden-nav
+    .container.text-center
+      .info.pull-right
+        p.small
+          = link_to('Privacy Policy', privacy_path)
+          = link_to('Terms of Service', terms_path)
+      .logo.pull-left
+        = link_to(image_tag('mini-logo.png', alt: 'The Dating Scene'), root_path)
+  
+section
+  header.site-head
+    .container
+      .info
+        = link_to('Make a Video', '#', class: 'simple-btn action scroll', 'data-page' => '3')
+        p.small
+          = link_to('Privacy Policy', privacy_path)
+          = link_to('Terms of Service', terms_path)
+      = link_to(image_tag('logo.png', alt: 'The Dating Scene'), root_path)
+  .page1
+    .container
+      h1.text-center.page-title
+        p The Dating Scene does some cool stuff that is different than other dating sites.
+        p It records realtime video of the user's response to a series of questions.
+      h2 How It Works
+      ul.steps
+        li
+          .circle 1
+          p redacted text
+        li
+          .circle 2
+          p redacted text
+        li
+          .circle 3
+          p redacted text
+      .btn-row
+        = link_to('Make a Video', '#', class: 'action scroll', 'data-page' => '3')
+        = link_to('View Others', '#', class: 'action scroll', 'data-page' => '2')
+section.page2
+  .container
+    h2 Scenes
+section.page3
+  .container
+    h2 Your Scene
+  

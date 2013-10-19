@@ -1,0 +1,29 @@
+html, body {
+  height: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: white;
+  color: white;
+  font-size: 14px;
+  font-family: $primaryFont;
+  line-height: 16px;
+}
+img {
+  border: 0;
+}
+a {
+  text-decoration: none;
+}
+a:focus, a:active {
+  outline: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+ul, ol {
+  margin-left: 20px;
+}
