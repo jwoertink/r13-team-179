@@ -1,0 +1,127 @@
+@import "typography";
+@import "reset";
+@import "mixins";
+
+//= require_self
+
+body {
+  .container {
+    width: 960px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .text-center {
+    text-align: center;
+  }
+  header.site-head {
+    text-align: center;
+    padding: 10px 0;
+    .info {
+      position: absolute;
+      right: 0;
+      top: 45px;
+      .simple-btn {
+        border: 2px solid $purple;
+        color: $purple;
+        padding: 15px;
+        border-radius: 6px;
+        font-size: 22px;
+        display: inline-block;
+        &:hover {
+          text-decoration: none;
+          background-color: $purple;
+          color: white;
+        }
+      }
+      p.small {
+        font-size: 12px;
+        margin-top: 10px;
+        a {
+          color: $gray;
+          text-decoration: underline;
+          margin-left: 8px;
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+    
+  }
+  section.content {
+    .page-title {
+      font-size: 26px;
+      line-height: 30px;
+      font-weight: 300;
+    }
+    .page1 {
+      padding: 30px 0;
+      @include full-background('home-bg.jpg');
+      h2 {
+        text-align: center;
+        font-size: 36px;
+        margin: 70px 0 30px;
+        &:before, &:after {
+          content: " ";
+          border-bottom: 1px solid white;
+          line-height: 0.1em;
+          margin: 10px 10px 7px;
+          display: inline-block;
+          width: 36%;
+        }
+      }
+      .steps {
+        list-style: none;
+        li {
+          display: inline-block;
+          width: 300px;
+          margin-left: 10px;
+          text-align: center;
+          &:first-child {
+            margin-left: 0;
+          }
+          .circle {
+            font-size: 78px;
+            line-height: 80px;
+            color: $purple;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 65px;
+            text-align: center;
+            width: 80px;
+            margin: 0 auto 30px;
+          }
+        }
+      } //.steps
+      .btn-row {
+        margin: 50px 0;
+        .action {
+          display: inline-block;
+          background-color: $purple;
+          color: white;
+          opacity: 0.8;
+          text-align: center;
+          padding: 20px;
+          font-size: 48px;
+          line-height: 50px;
+          font-weight: 100;
+          border-radius: 10px;
+          font-family: 'Helvetica Neue';
+          margin-left: 120px;
+          width: 380px;
+          &:first-child {
+            margin-left: 0;
+          }
+          &:hover {
+            text-decoration: none;
+            color: $purple;
+            background-color: white;
+          }
+        }
+      }
+    } // .page1
+  } // section.content
+  footer.site-foot {
+    
+  }
+}
