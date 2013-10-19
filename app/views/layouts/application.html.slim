@@ -1,0 +1,31 @@
+ html
+/[if lt IE 9]
+  html class="iesux" lang="en"
+/[if (gte IE 9)|!(IE)]
+  html class="notie" lang="en"
+head
+  meta charset="utf-8"
+  meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
+  meta name="viewport" content="width=device-width, initial-scale=1.0"
+  meta name="keywords" content=""
+  meta name="description" content=""
+  meta name="distribution" content="all"
+  meta name="robots" content="all"    
+  meta name="resource-type" content="document"
+  meta name="copyright" content="Copyright (c) LVRUG Team 4"
+  = csrf_meta_tags
+  title The Dating Scene | A dating social experiment
+
+  link rel="dns-prefetch" href="//ajax.googleapis.com"
+  link rel="icon" type="image/png" href="/assets/favicon.ico"
+
+  = stylesheet_link_tag 'application', media: 'all', "data-turbolinks-track" => true
+  = yield :stylesheets 
+  /[if lt IE 9]
+    = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js' 
+  = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js' 
+  = yield :head
+  
+body class="public"
+  = yield 
+  = javascript_include_tag "application", "data-turbolinks-track" => true
