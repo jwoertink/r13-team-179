@@ -68,6 +68,7 @@ set :branch, "master"
  
 # Roles
 role :app, LINODE_SERVER_HOSTNAME
+role :web, LINODE_SERVER_HOSTNAME
 role :db, LINODE_SERVER_HOSTNAME, :primary => true
  
 # Add Configuration Files & Compile Assets
