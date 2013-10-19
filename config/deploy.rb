@@ -1,4 +1,7 @@
 require 'bundler/capistrano'
+require 'rvm/capistrano'
+require 'capistrano/foreman'
+require 'puma/capistrano'
 
 set :application, 'datingscene'
 set :user, "deploy"
@@ -25,8 +28,6 @@ set :rvm_type, :system
 
 set :keep_releases, 5
 
-require 'capistrano/foreman'
-
 # Default settings
 set :foreman_sudo, 'rvmsudo'                    # Set to `rvmsudo` if you're using RVM
 set :foreman_upstart_path, '/etc/init/' # Set to `/etc/init/` if you don't have a sites folder
@@ -46,7 +47,6 @@ namespace :nginx do
     end
   end
 end
-
 
 
 namespace :deploy do
@@ -74,5 +74,3 @@ after 'deploy:update_code', 'deploy:set_database_yml'
 after "deploy:restart", "deploy:cleanup"
 after 'deploy:update', 'foreman:export'
 after "deploy:restart", "foreman:restart"
-require 'rvm/capistrano'
-require 'puma/capistrano'
