@@ -4,4 +4,12 @@ class SiteController < ApplicationController
     
   end
   
+  def privacy
+    
+  end
+  
+  def terms
+    
+  end
+  
 end

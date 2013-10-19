@@ -1,11 +1,20 @@
+nav.hidden-nav
+  .container.text-center
+    .info.pull-right
+      p.small
+        = link_to('Privacy Policy', privacy_path)
+        = link_to('Terms of Service', terms_path)
+    .logo.pull-left
+      = link_to(image_tag('mini-logo.png', alt: 'The Dating Scene'), root_path)
+    = link_to('Make a Video', '', class: 'simple-btn')
 section
   header.site-head
     .container
       .info
         = link_to('Make a Video', '#', class: 'simple-btn action scroll', 'data-page' => '3')
         p.small
-          = link_to('Privacy Policy', '')
-          = link_to('Terms of Service', '')
+          = link_to('Privacy Policy', privacy_path)
+          = link_to('Terms of Service', terms_path)
       = link_to(image_tag('logo.png', alt: 'The Dating Scene'), root_path)
   .page1
     .container

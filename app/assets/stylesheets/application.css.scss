@@ -71,6 +71,52 @@ body {
     }
     @import "home-page";
     @import "videos-page";
+    nav.page-header {
+      background-color: $pink;
+      clear: both;
+      height: 100px;
+      .info.pull-right {
+        position: absolute;
+        right: 0;
+        top: 35px;
+        p.small {
+          font-size: 12px;
+          margin-top: 10px;
+          a {
+            color: $gray;
+            text-decoration: underline;
+            margin-left: 8px;
+            &:first-child {
+              margin-left: 0;
+            }
+          }
+        }
+      }
+      .logo.pull-left {
+        position: absolute;
+        left: 0;
+        top: 20px;
+      }
+    }
+    .static-page {
+      background-color: $purple;
+      color: white;
+      height: 100%;
+      padding-top: 50px;
+      .page-title {
+        text-align: center;
+        font-size: 36px;
+        margin: 0px 0 30px;
+        &:before, &:after {
+          content: " ";
+          border-bottom: 1px solid white;
+          line-height: 0.1em;
+          margin: 10px 15px 8px;
+          display: inline-block;
+          width: 33%;
+        }
+      }
+    }
   } // section.content
   footer.site-foot {
     
