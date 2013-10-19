@@ -1,7 +1,7 @@
 Profile:
   string :ip_address
   string :email
-  string :video # may need to be it's own object?
+  string :video
   string :url_key
   
   has_many :interests
@@ -12,10 +12,13 @@ Interest:
   string :gender
   integer :profile_id
   
+  add_index :interests, :profile_id
+  
 Question:
   string :text
   string :category
   string :video
+  
   mount_uploader :video, VideoUploader
   
 Video:
