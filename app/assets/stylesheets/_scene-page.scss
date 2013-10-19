@@ -15,4 +15,77 @@
       width: 36%;
     }
   }
+  .webcam-box {
+    margin: 10px auto;
+    position: relative;
+    z-index: 1;
+    .hidden {
+      display: none;
+    }
+    .preload {
+      text-align: center;
+      margin: 180px 0;
+      position: absolute;
+      z-index: 150;
+      top: 0;
+      h3 {
+        font-size: 32px;
+        font-weight: 100;
+      }
+    }
+    #webcam {
+      opacity: 0;
+      position: absolute;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      width: 960px;
+      height: 640px;
+    }
+    [class^="overlay"] {
+      position: absolute;
+      z-index: 500;
+      background-color: rgba(0, 0, 0, 0.6);
+      height: 540px;
+      width: 860px;
+      text-align: center;
+      top: 0;
+      padding: 50px;
+      font-size: 24px;
+      line-height: 32px;
+      left: 0;
+    }
+    .overlay-start {
+      
+    }
+    .overlay-question {
+      
+    }
+    .overlay-complete {
+      
+    }
+    .action {
+      display: inline-block;
+      background-color: $purple;
+      color: white;
+      opacity: 0.8;
+      text-align: center;
+      padding: 20px;
+      font-size: 48px;
+      line-height: 50px;
+      font-weight: 100;
+      border-radius: 10px;
+      font-family: $lightFont;
+      margin-top: 60px;
+      width: 380px;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:hover {
+        text-decoration: none;
+        color: $purple;
+        background-color: white;
+      }
+    }
+  }
 } // .page3

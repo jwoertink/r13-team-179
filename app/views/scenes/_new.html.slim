@@ -1,0 +1,19 @@
+section.page3
+  .container
+    h2 Your Scene
+    .webcam-box.text-center
+      .preload
+        h3 Before you can start, you'll need to allow us to access your webcam.
+        = link_to('Ok I Understand', '#', class: 'ready-cam action')
+      #webcam
+      .overlay-start.hidden
+        p Alright, so here's how easy it is to get on The DatingScene. We will ask you 4 questions, and you'll haev 5 seconds to answer each one. It's that simple. 
+        = link_to("Let's Do This!", '#', class: 'start-video action')
+      .overlay-question.hidden data-question="1"
+        h3.question-title Question 1
+        h2 What was the last concert that you attended?
+        = link_to("I'm ready", '#', class: 'answer action')
+      .overlay-question.hidden data-question="2"
+      .overlay-question.hidden data-question="3"
+      .overlay-question.hidden data-question="4"
+      .overlay-complete.hidden

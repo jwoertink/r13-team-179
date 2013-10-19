@@ -1,0 +1,12 @@
+- content_for(:page_title) do
+  | Our app may be broke, but you can still enjoy this 500.
+
+- content_for(:error_box) do
+  .error-box
+    h1 500
+    p Our site isn't working properly right now, but that doesn't mean you can't enjoy it.
+    br
+    p Check back later and we'll be back in business.
+    
+- content_for(:body_class) do
+  | e500
