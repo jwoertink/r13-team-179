@@ -29,6 +29,9 @@ $ ->
     $('.overlay-start').removeClass('hidden')
     $('#webcam').css({'opacity': 1})
     false
+  $('.start-video').click ->
+    $('.overlay-start').remove()
+    false
   
 $.timer = null
 $.progress = null
@@ -37,19 +40,14 @@ $.loop = (ms, func) -> window.setInterval func, ms
   
 readyWebcam = ()->
   $("#webcam").scriptcam
-    width: 960
-    height: 640
     onError: (errorID, msg)->
       console.log "Error: #{errorID}"
       console.log msg
     fileName: 'question_1' # TODO: figure out which question I'm on
     connected: ()->
       console.log 'connected to server'
-      $('.start-video').click ->
-        $('.overlay-start').html('')
-        $('.overlay-question[data-question=1]').removeClass('hidden')
-        startRecording()
-        false
+      $('.overlay-question[data-question=1]').removeClass('hidden')
+      startRecording()  
     maximumTime: 20
     country: 'usa'
           
