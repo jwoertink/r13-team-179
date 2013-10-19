@@ -1,19 +1,35 @@
-.page1
+section
+  header.site-head
+    .container
+      .info
+        = link_to('Make a Video', '', class: 'simple-btn')
+        p.small
+          = link_to('Privacy Policy', '')
+          = link_to('Terms of Service', '')
+      = link_to(image_tag('logo.png', alt: 'The Dating Scene'), root_path)
+  .page1
+    .container
+      h1.text-center.page-title
+        p The Dating Scene does some cool stuff that is different than other dating sites.
+        p It records realtime video of the user's response to a series of questions.
+      h2 How It Works
+      ul.steps
+        li
+          .circle 1
+          p redacted text
+        li
+          .circle 2
+          p redacted text
+        li
+          .circle 3
+          p redacted text
+      .btn-row
+        = link_to('Make a Video', '', class: 'action')
+        = link_to('View Others', '', class: 'action')
+section.page2
   .container
-    h1.text-center.page-title
-      p The Dating Scene does some cool stuff that is different than other dating sites.
-      p It records realtime video of the user's response to a series of questions.
-    h2 How It Works
-    ul.steps
-      li
-        .circle 1
-        p redacted text
-      li
-        .circle 2
-        p redacted text
-      li
-        .circle 3
-        p redacted text
-    .btn-row
-      = link_to('Make a Video', '', class: 'action')
-      = link_to('View Others', '', class: 'action')
+    h2 Scenes
+section.page3
+  .container
+    h1.text-center page 3
+  

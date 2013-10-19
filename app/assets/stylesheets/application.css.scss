@@ -1,7 +1,7 @@
 @import "typography";
 @import "reset";
 @import "mixins";
-
+@import "page-scroll";
 //= require_self
 
 body {
@@ -46,15 +46,26 @@ body {
         }
       }
     }
-    
-  }
-  section.content {
+  } // header.site-head
+  ul.onepage-pagination {
+    z-index: 100;
+    li a:before {
+      background-color: white;
+    }
+    li a.active:before {
+      border: 1px solid white;
+    }
+  } // ul.onepage-pagination
+  #main.content {
+    position: relative;
+    z-index: 10;
     .page-title {
       font-size: 26px;
       line-height: 30px;
       font-weight: 300;
     }
     @import "home-page";
+    @import "videos-page";
   } // section.content
   footer.site-foot {
     
