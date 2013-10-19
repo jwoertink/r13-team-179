@@ -1,0 +1,26 @@
+doctype html
+/[if lt IE 9]
+  html class="iesux" lang="en"
+/[if (gte IE 9)|!(IE)]
+  html class="notie" lang="en"
+head
+  title The Dating Scene | A dating social experiment
+
+  link rel="dns-prefetch" href="//ajax.googleapis.com"
+
+  = stylesheet_link_tag 'application', media: 'all' 
+  /[if lt IE 9]
+    = javascript_cdn_tag 'html5shiv', '3.6.1' 
+  
+body class="public"
+  #webcam
+  
+  = link_to('click', '#', class: 'cam')
+  = jquery_include_tag :google 
+  = javascript_cdn_tag 'swfobject', '2.2' 
+  = javascript_include_tag "application" 
+  style
+    | #webcam { width: 960px; height: 640px; position: absolute; top: 0; }
+  script $(function(){$('a.cam').click(function(){$("#webcam").scriptcam();});});
+  
+  
