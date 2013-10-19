@@ -27,6 +27,7 @@ head
   = yield :head
   
 body class="public"
+  = yield(:hidden_nav)
   #main.content
     = yield 
   = jquery_include_tag :google 
