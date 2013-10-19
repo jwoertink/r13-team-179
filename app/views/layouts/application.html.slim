@@ -27,6 +27,16 @@ head
   = yield :head
   
 body class="public"
+  nav.hidden-nav
+    .container.text-center
+      .info.pull-right
+        p.small
+          = link_to('Privacy Policy', '')
+          = link_to('Terms of Service', '')
+      .logo.pull-left
+        = link_to(image_tag('mini-logo.png', alt: 'The Dating Scene'), root_path)
+      = link_to('Make a Video', '', class: 'simple-btn')
+    
   #main.content
     = yield 
   = jquery_include_tag :google 

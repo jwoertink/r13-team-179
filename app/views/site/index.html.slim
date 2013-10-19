@@ -2,7 +2,7 @@ section
   header.site-head
     .container
       .info
-        = link_to('Make a Video', '', class: 'simple-btn')
+        = link_to('Make a Video', '#', class: 'simple-btn action scroll', 'data-page' => '3')
         p.small
           = link_to('Privacy Policy', '')
           = link_to('Terms of Service', '')
@@ -24,8 +24,8 @@ section
           .circle 3
           p redacted text
       .btn-row
-        = link_to('Make a Video', '', class: 'action')
-        = link_to('View Others', '', class: 'action')
+        = link_to('Make a Video', '#', class: 'action scroll', 'data-page' => '3')
+        = link_to('View Others', '#', class: 'action scroll', 'data-page' => '2')
 section.page2
   .container
     h2 Scenes
