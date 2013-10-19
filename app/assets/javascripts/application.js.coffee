@@ -1,7 +1,7 @@
 #= require jquery_ujs
 #= require underscore.min
 #= require page-scroll.min
-#= require scriptcam
+#= require scriptcam.min
 #= require_self
 
 $ ->
