@@ -1,19 +1,19 @@
 doctype html
 html
-head
-  title= yield(:page_title)
-  = stylesheet_link_tag 'errors'
+  head
+    title= yield(:page_title)
+    = stylesheet_link_tag 'errors', media: 'screen'
  
-body class="error-page #{yield(:body_class)}"
-  header.basic-head
-    .container.text-center
-      .info.pull-right
-        p.small
-          = link_to('Privacy Policy', privacy_path)
-          = link_to('Terms of Service', terms_path)
-      = link_to('Back Home', root_path, class: 'simple-btn')
-      .logo.pull-left
-        = link_to(image_tag('mini-logo.png'), root_path)
-  .container
-    section.content
-      = yield(:error_box)
+  body class="error-page #{yield(:body_class)}"
+    header.basic-head
+      .container.text-center
+        .info.pull-right
+          p.small
+            = link_to('Privacy Policy', privacy_path)
+            = link_to('Terms of Service', terms_path)
+        = link_to('Back Home', root_path, class: 'simple-btn')
+        .logo.pull-left
+          = link_to(image_tag('mini-logo.png'), root_path)
+    .container
+      section.content
+        = yield(:error_box)
