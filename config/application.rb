@@ -8,7 +8,6 @@ Bundler.require(:default, Rails.env)
 
 module Datingscene
   class Application < Rails::Application
-    #config.exceptions_app = self.routes
     config.generators do |g|
       g.template_engine :slim
     end

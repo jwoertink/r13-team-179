@@ -6,6 +6,7 @@ gem 'carrierwave', '0.9.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'capistrano-foreman'
 gem 'foreman'
+gem "fog", "1.16.0"
 gem 'jquery-rails-cdn', '1.0.1'
 gem 'kaminari', '0.14.1'
 gem 'pg', '0.17.0'
