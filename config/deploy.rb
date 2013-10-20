@@ -1,4 +1,5 @@
 require 'bundler/capistrano'
+require 'sidekiq/capistrano'
  
 # This capistrano deployment recipe is made to work with the optional
 # StackScript provided to all Rails Rumble teams in their Linode dashboard.
@@ -83,6 +84,9 @@ run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
  
 # Compile Assets
 run "cd #{release_path}; RAILS_ENV=production bundle exec rake assets:precompile"
+end
+deploy.task :start, :roles => :app do
+  sidekiq
 end
  
 # Restart Passenger
