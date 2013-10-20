@@ -73,7 +73,7 @@ role :db, LINODE_SERVER_HOSTNAME, :primary => true
 
 # Add Symlink to Shared for Question.videos
 after 'deploy:update_code' do
-  run "ln -nfs #{shared_path}/questions #{current_path}/public/"
+  run "ln -nfs #{shared_path}/question #{current_path}/public/"
 end
 
 # Add Configuration Files & Compile Assets

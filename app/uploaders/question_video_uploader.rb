@@ -1,5 +1,5 @@
 # encoding: utf-8
-class VideoUploader < CarrierWave::Uploader::Base
+class QuestionVideoUploader < CarrierWave::Uploader::Base
 
   def store_dir
     "#{Rails.root}/../../shared/#{model.class.to_s.underscore}/#{model.category}/"
