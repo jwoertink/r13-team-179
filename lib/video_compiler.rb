@@ -1,4 +1,31 @@
+require 'fileutils'
+
 module VideoCompiler
+  
+  # the path to where we will store tmp videos locally
+  def tmp_video_path
+    Rails.root.join('tmp', 'videos')
+  end
+  
+  # create the tmp videos directory if it doesn't exist
+  def create_videos_tmp_directory
+    FileUtils.mkdir_p tmp_video_path
+  end
+  
+  def download_tmp_video(url_source)
+    create_videos_tmp_directory unless Dir.exists? tmp_video_path
+    tmp_file_path = tmp_video_path.join("video-#{Time.now.to_i}.mp4")
+    File.open(tmp_file_path, "wb") do |file|
+      file.write open(url_source).read
+    end
+    tmp_file_path
+  end
+  
+  # return the new S3 url for the fully compiled video
+  def get_remote_video_url
+    ''
+  end
+  
   def gather_recordings
     @selfies = {}
     # collect tmp recording in selfies_array
@@ -43,7 +70,7 @@ module VideoCompiler
   end
   
   def upload_final_production_to_s3(object)
-    object.update_attribute(:video, completed.mp4)
+    object.update_attribute(:video, 'completed.mp4')
     # kick-off notification to profile owner
   end
   

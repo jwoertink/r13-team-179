@@ -5,7 +5,7 @@ class Profile < ActiveRecord::Base
   mount_uploader :video, VideoUploader
   
   after_initialize :generate_url_key
-  after_create :download_temp_video
+  before_create :download_temp_video
   
   def self.completed
     where(completed: true)
@@ -15,11 +15,18 @@ class Profile < ActiveRecord::Base
     self.write_attribute(:question_ids, ids)
   end
   
+  # The macro process to generating the new video
+  # clean up old videos, and remove tmp videos from system
+  # ensure new video is pushed to S3, and saved onto the model
   def compile_video
     create_recipe
     process_files
     upload_and_cleanup
-    self.update_attribute(:completed, true)
+    
+    # mark profile as completed with the new video url
+    self.remote_video_url = get_remote_video_url
+    self.completed = true
+    save!
   end
   
   private
@@ -29,9 +36,7 @@ class Profile < ActiveRecord::Base
   end
   
   def download_temp_video
-    # TODO: download the video from the original_url
-    #  Save to the local system and associate the video with the id
-    # After video is downloaded, then compile final product
+    self.tmp_video_path = download_tmp_video(original_url)
   end
   
 end
