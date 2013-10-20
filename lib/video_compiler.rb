@@ -21,11 +21,6 @@ module VideoCompiler
     tmp_file_path.to_s
   end
   
-  # return the new S3 url for the fully compiled video
-  def get_remote_video_url
-    'https://s3-us-west-2.amazonaws.com/datingscene/uploads/profile/video/1/tmp-1382284530.mp4'
-  end
-  
   def collect_question_videos(array_of_question_ids)
     @clips = [] # it should be paths to videos
     array_of_question_ids.each do |id|
@@ -60,11 +55,6 @@ module VideoCompiler
   
   def create_recipe_final_ts
     `cat 0.ts 1.ts 2.ts 3.ts 4.ts 5.ts 6.ts 7.ts > /tmp/videos/final.ts`
-    #File.open('recipe.txt', "w+") do |file|
-    #  @order.each do |clip|
-    #    file.write("file '" + clip + "'\n")
-    #  end
-    #end
   end
   
   def compile_recipe
@@ -86,12 +76,6 @@ module VideoCompiler
   def take_screenshot
     `ffmpeg -i /tmp/videos/completed.mp4 -ss 00:00:07.001 -f image2 -vframes 1 /tmp/videos/poster.png`
     # take a screenshot 7sec from begining of video
-  end
-  
-  def upload_final_production_to_s3(object)
-    object.update_attribute(:video, 'completed.mp4')
-    object.update_attribute(:remote_video_url, object.video.url)
-    # kick-off notification to profile owner
   end
   
   def cleanup_ffmpeg_files

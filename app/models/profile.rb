@@ -46,14 +46,9 @@ class Profile < ActiveRecord::Base
     # TODO: push screetshot to aws::s3 and associate to profile
     # take_screenshot 
     
-    # Push Final Production up to AWS::S3
-    upload_final_production_to_s3(@profile)
-    
-    # Cleanup the mess
-    cleanup_ffmpeg_files
-    
     # mark profile as completed with the new video url
-    self.remote_video_url = get_remote_video_url
+    movie = FFMPEG::Movie.new('/tmp/videos/completed.mp4')
+    self.video = movie
     self.completed = true
     save!
   end
