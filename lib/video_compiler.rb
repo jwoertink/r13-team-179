@@ -23,7 +23,7 @@ module VideoCompiler
   
   # return the new S3 url for the fully compiled video
   def get_remote_video_url
-    ''
+    'https://s3-us-west-2.amazonaws.com/datingscene/uploads/profile/video/1/tmp-1382284530.mp4'
   end
   
   def collect_question_videos(array_of_question_ids)
@@ -42,17 +42,17 @@ module VideoCompiler
     `ffmpeg -i /root/#{@source} -vcodec copy -acodec copy -ss 00:00:15 -t 00:00:05 /tmp/videos/clip-4.mp4`
   end
   
-  def combine_and_order_files(@clips)
+  def combine_and_order_files(clips)
     @order = []
     @selfies = ["/tmp/videos/clip-1.mp4", "/tmp/videos/clip-2.mp4", "/tmp/videos/clip-3.mp4", "/tmp/videos/clip-4.mp4"]
-    @clips.each_with_index do |path, index|
+    clips.each_with_index do |path, index|
       @order << path << @selfies[index]
     end
   end
   
-  def convert_all_media_to_ts(@order)
+  def convert_all_media_to_ts(order)
     @recipe = []
-    @order.each_with_index do |path, index|
+    order.each_with_index do |path, index|
       `ffmpeg -i #{path} -c:v libx264 -vf scale=640:480 -r 60 -c:a aac -ar 16000 -b:a 160k -strict experimental -f mpegts /tmp/videos/#{index}.ts`
       @recipe << "/tmp/videos/#{index}.ts"
     end
@@ -90,13 +90,11 @@ module VideoCompiler
   
   def upload_final_production_to_s3(object)
     object.update_attribute(:video, 'completed.mp4')
+    object.update_attribute(:remote_video_url, object.video.url)
     # kick-off notification to profile owner
   end
   
   def cleanup_ffmpeg_files
     `rm -rf /tmp/videos/*.*`
-    `rm -rf script.wav`
-    `rm -rf track.wav`
-    `rm -rf completed.mp4`
   end
 end
