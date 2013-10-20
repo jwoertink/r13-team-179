@@ -36,15 +36,15 @@ module VideoCompiler
   def split_source(profile_tmp_video_path)
     @source = profile_tmp_video_path
     
-    `ffmpeg -i /root/#{@source} -vcodec copy -acodec copy -ss 00:00:05 -t 00:00:05 /tmp/clip-1.mp4`
-    `ffmpeg -i /root/#{@source} -vcodec copy -acodec copy -ss 00:00:05 -t 00:00:05 /tmp/clip-2.mp4`
-    `ffmpeg -i /root/#{@source} -vcodec copy -acodec copy -ss 00:00:10 -t 00:00:05 /tmp/clip-3.mp4`
-    `ffmpeg -i /root/#{@source} -vcodec copy -acodec copy -ss 00:00:15 -t 00:00:05 /tmp/clip-4.mp4`
+    `ffmpeg -i /root/#{@source} -vcodec copy -acodec copy -ss 00:00:05 -t 00:00:05 /tmp/videos/clip-1.mp4`
+    `ffmpeg -i /root/#{@source} -vcodec copy -acodec copy -ss 00:00:05 -t 00:00:05 /tmp/videos/clip-2.mp4`
+    `ffmpeg -i /root/#{@source} -vcodec copy -acodec copy -ss 00:00:10 -t 00:00:05 /tmp/videos/clip-3.mp4`
+    `ffmpeg -i /root/#{@source} -vcodec copy -acodec copy -ss 00:00:15 -t 00:00:05 /tmp/videos/clip-4.mp4`
   end
   
   def combine_and_order_files(@clips)
     @order = []
-    @selfies = ["/tmp/clip-1.mp4", "/tmp/clip-2.mp4", "/tmp/clip-3.mp4", "/tmp/clip-4.mp4"]
+    @selfies = ["/tmp/videos/clip-1.mp4", "/tmp/videos/clip-2.mp4", "/tmp/videos/clip-3.mp4", "/tmp/videos/clip-4.mp4"]
     @clips.each_with_index do |path, index|
       @order << path << @selfies[index]
     end
@@ -53,13 +53,13 @@ module VideoCompiler
   def convert_all_media_to_ts(@order)
     @recipe = []
     @order.each_with_index do |path, index|
-      `ffmpeg -i #{path} -c:v libx264 -vf scale=640:480 -r 60 -c:a aac -ar 48000 -b:a 160k -strict experimental -f mpegts /tmp/#{index}.ts`
-      @recipe << "/tmp/#{index}.ts"
+      `ffmpeg -i #{path} -c:v libx264 -vf scale=640:480 -r 60 -c:a aac -ar 16000 -b:a 160k -strict experimental -f mpegts /tmp/videos/#{index}.ts`
+      @recipe << "/tmp/videos/#{index}.ts"
     end
   end
   
   def create_recipe_final_ts
-    `cat 0.ts 1.ts 2.ts 3.ts 4.ts 5.ts 6.ts 7.ts > final.ts`
+    `cat 0.ts 1.ts 2.ts 3.ts 4.ts 5.ts 6.ts 7.ts > /tmp/videos/final.ts`
     #File.open('recipe.txt', "w+") do |file|
     #  @order.each do |clip|
     #    file.write("file '" + clip + "'\n")
@@ -68,22 +68,23 @@ module VideoCompiler
   end
   
   def compile_recipe
-    `ffmpeg -f concat -i recipe.txt -c copy preprossed.mp4`
+    `ffmpeg -i /tmp/videos/final.ts -c copy -bsf:a aac_adtstoasc /tmp/videos/preprocessed.mp4`
   end
   
   def seperate_audio_from_compiled_videos
-    `ffmpeg -i preprocced.mp4 script.wav`
+    `ffmpeg -i /tmp/videos/preprocessed.mp4 /tmp/videos/script.wav`
   end
   
   def mixin_background_wav_with_audio_file
-    `ffmpeg -i script.wav -i background.wav -filter_complex amerge -c:a libmp3lame -q:a 4 track.wav`
+    `ffmpeg -i /tmp/videos/script.wav -i background.wav -filter_complex amerge -c:a libmp3lame -q:a 4 /tmp/videos/track.wav`
   end
   
   def overlay_mixed_audio_back_on_video
-    `ffmpeg -i preprocessed.mp4 -i track.wav -c:v copy -c:a aac -strict experimental completed.mp4`
+    `ffmpeg -i /tmp/videos/preprocessed.mp4 -i /tmp/videos/track.wav -c:v copy -c:a aac -strict experimental /tmp/videos/completed.mp4`
   end
   
   def take_screenshot
+    `ffmpeg -i /tmp/videos/completed.mp4 -ss 00:00:07.001 -f image2 -vframes 1 /tmp/videos/poster.png`
     # take a screenshot 7sec from begining of video
   end
   
@@ -93,7 +94,7 @@ module VideoCompiler
   end
   
   def cleanup_ffmpeg_files
-    `rm -rf preprocessed.mp4`
+    `rm -rf /tmp/videos/*.*`
     `rm -rf script.wav`
     `rm -rf track.wav`
     `rm -rf completed.mp4`
