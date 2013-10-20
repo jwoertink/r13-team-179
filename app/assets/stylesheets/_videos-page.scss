@@ -15,4 +15,41 @@
       width: 36%;
     }
   }
+  .video-row {
+    clear: both;
+    margin-bottom: 49px;
+    overflow: hidden;
+    .box {
+      height: 120px;
+      width: 203px;
+      float: left;
+      margin-left: 49px;
+      &:first-child {
+        margin-left: 0;
+      }
+      a.img {
+        display: block;
+        position: relative;
+        z-index: 1;
+        .hover {
+          display: none;
+        }
+        &:hover {
+          .hover {
+            background: rgba(255, 255, 255, 0.5) image-url('play-btn.png') no-repeat scroll center center;
+            display: block !important;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+          }
+        }
+      }
+      .reveal-modal {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+    } // .box
+  }
 } // .page2

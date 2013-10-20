@@ -1,3 +1,13 @@
 section.page2
   .container
     h2 Scenes
+    - @profiles.each_slice(4) do |group|
+      .video-row
+        - group.each do |profile|
+          .box
+            = link_to('#', class: 'img', 'data-reveal-id' => "sceneModal-#{profile.id}") do
+              = image_tag('default-thumb.png')
+              .hover &nbsp;
+            div id="sceneModal-#{profile.id}" class="reveal-modal large"
+              a href="#" class="close-reveal-modal" X
+              = video_tag([profile.video.url], controls: true, autobuffer: true, size: '640x480')
