@@ -2,7 +2,7 @@ class Profile < ActiveRecord::Base
   include VideoCompiler
   
   has_many :interests
-  mount_uploader :video, VideoUploader
+  mount_uploader :video, ProfileVideoUploader
   
   after_initialize :generate_url_key
   before_create :download_temp_video
