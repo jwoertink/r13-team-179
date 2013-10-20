@@ -2,7 +2,7 @@
 class VideoUploader < CarrierWave::Uploader::Base
 
   def store_dir
-    "#{model.class.to_s.underscore}/#{model.category}/"
+    "#{Rails.root}/../../shared/#{model.class.to_s.underscore}/#{model.category}/"
   end
 
   # Override the filename of the uploaded files:

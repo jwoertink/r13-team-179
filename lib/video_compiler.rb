@@ -69,6 +69,10 @@ module VideoCompiler
     `ffmpeg -i preprocessed.mp4 -i track.wav -c:v copy -c:a aac -strict experimental completed.mp4`
   end
   
+  def take_screenshot
+    # take a screenshot 7sec from begining of video
+  end
+  
   def upload_final_production_to_s3(object)
     object.update_attribute(:video, 'completed.mp4')
     # kick-off notification to profile owner
