@@ -10,11 +10,7 @@ class Profile < ActiveRecord::Base
   def self.completed
     where(completed: true)
   end
-  
-  def question_ids=(ids)
-    self[:question_ids] = ids.map(&:to_i)
-  end
-  
+    
   # The macro process to generating the new video
   # clean up old videos, and remove tmp videos from system
   # ensure new video is pushed to S3, and saved onto the model
@@ -22,7 +18,7 @@ class Profile < ActiveRecord::Base
     @profile = self
     
     # Gather Question Videos
-    collect_question_videos(@profile.question_ids)
+    collect_question_videos(@profile.question_ids.split(','))
     
     # Divide Source Video into 4 Sections
     split_source(@profile.tmp_video_path)

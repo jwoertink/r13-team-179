@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131020160809) do
+ActiveRecord::Schema.define(version: 20131020233257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20131020160809) do
     t.string   "url_key"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "question_ids",   default: [],    array: true
+    t.string   "question_ids",   default: "{}"
     t.string   "original_url"
     t.boolean  "completed",      default: false
     t.string   "tmp_video_path"

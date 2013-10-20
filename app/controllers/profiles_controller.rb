@@ -14,6 +14,7 @@ class ProfilesController < ApplicationController
   protected
   
   def profile_params
+    params[:profile].merge!(question_ids: params[:question_ids].join(','))
     params.require(:profile).permit(:email, :url_key, :question_ids, :original_url)
   end
   

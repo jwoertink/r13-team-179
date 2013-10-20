@@ -12,7 +12,7 @@ section.page3
           = link_to("Let's Do This!", '#', class: 'start-video action', 'data-reveal-id' => 'webcamModal')
         - @questions.each_with_index do |question, index|
           .overlay-question.hidden data-question="#{index + 1}"
-            = hidden_field_tag('profile[question_ids][]', question.id)
+            = hidden_field_tag('question_ids[]', question.id)
             h3.question-title Question #{index + 1}
             p.text= question.text
             = link_to("I'm ready", '#', class: 'answer action')
