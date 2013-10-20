@@ -14,6 +14,7 @@ gem 'puma', '2.6.0'
 gem 'rvm-capistrano', '1.3.0'
 gem 'sass-rails', '~> 4.0.0'
 gem 'slim', '2.0.1'
+gem 'streamio-ffmpeg', '1.0.0'
 gem 'turbolinks', '1.3.0'
 gem 'uglifier', '>= 1.3.0'
 
