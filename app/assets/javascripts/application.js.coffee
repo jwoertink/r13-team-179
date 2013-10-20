@@ -3,9 +3,11 @@
 #= require page-scroll.min
 #= require scriptcam
 #= require reveal
+#= require media-elements
 #= require_self
 
 $ ->
+  loadVideos()
   $('#main.content').onepage_scroll
     afterMove: (index)->
       currentPage = $('.onepage-pagination a.active').data('index')
@@ -116,4 +118,7 @@ loadFinalForm = ()->
         'top': '0'
         'width': '100%'
         'z-index': '9000'
-  
+
+loadVideos = ()->
+  $('.video-player').mediaelementplayer
+    features: ['playpause','progress','volume','sourcechooser']

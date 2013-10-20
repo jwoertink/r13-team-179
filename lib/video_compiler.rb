@@ -18,7 +18,7 @@ module VideoCompiler
     File.open(tmp_file_path, "wb") do |file|
       file.write open(url_source).read
     end
-    tmp_file_path
+    tmp_file_path.to_s
   end
   
   # return the new S3 url for the fully compiled video

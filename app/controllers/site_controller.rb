@@ -4,7 +4,7 @@ class SiteController < ApplicationController
   def index
     @questions = Question.random_by_category
     @profile = Profile.new
-    @profiles = Profile.all
+    @profiles = Profile.completed
   end
   
   def privacy
