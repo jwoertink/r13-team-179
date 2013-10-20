@@ -12,7 +12,7 @@ class Profile < ActiveRecord::Base
   end
   
   def question_ids=(ids)
-    self.write_attribute(:question_ids, ids)
+    self[:question_ids] = ids.map(&:to_i)
   end
   
   # The macro process to generating the new video
