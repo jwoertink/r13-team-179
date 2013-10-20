@@ -3,7 +3,7 @@
 #= require page-scroll.min
 #= require scriptcam
 #= require reveal
-#= require media-elements
+#= require flowplayer
 #= require_self
 
 $ ->
@@ -120,5 +120,16 @@ loadFinalForm = ()->
         'z-index': '9000'
 
 loadVideos = ()->
-  $('.video-player').mediaelementplayer
-    features: ['playpause','progress','volume','sourcechooser']
+  api = $(".flowplayer").flowplayer()
+  api.video.height = 480
+  api.video.width = 640
+  api.bind "finish", -> $(@).siblings('.overlay-interest').show()
+            
+  $('.reveal-modal .cancel').click ->
+    $(@).parents('[class^=overlay]').hide()
+    $("#sceneModal-#{@hash.substr(1)}").trigger('reveal:close');
+    false
+  $('.reveal-modal .action').click ->
+    
+    false
+  

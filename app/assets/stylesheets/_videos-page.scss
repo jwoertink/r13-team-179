@@ -49,6 +49,108 @@
       }
       .reveal-modal {
         background-color: rgba(0, 0, 0, 0.7);
+        height: 480px;
+      }
+      [class^=overlay] {
+        position: absolute;
+        z-index: 500;
+        background-color: rgba(0, 0, 0, 0.6);
+        height: 383px;
+        width: 540px;
+        text-align: center;
+        top: 0;
+        padding: 50px;
+        font-size: 24px;
+        line-height: 32px;
+        left: 0;
+        display: none;
+        h3 {
+          font-size: 36px;
+          line-height: 38px;
+        }
+        .link-block {
+          display: block;
+          margin-bottom: 20px;
+        }
+        .link-small {
+          font-size: 28px !important;
+          line-height: 30px;
+          width: auto !important;
+          margin-left: 10px !important;
+        }
+        .action {
+          background-color: $purple;
+          color: white;
+          opacity: 0.8;
+          text-align: center;
+          padding: 20px;
+          font-size: 48px;
+          line-height: 50px;
+          font-weight: 100;
+          border-radius: 10px;
+          font-family: $lightFont;
+          margin-top: 60px;
+          width: 380px;
+          border: none;
+          &:first-child {
+            margin-left: 0;
+          }
+          &:hover {
+            text-decoration: none;
+            color: $purple;
+            background-color: white;
+          }
+        }
+        .cancel {
+          display: inline-block;
+          background-color: $gray;
+          color: white;
+          opacity: 0.8;
+          text-align: center;
+          padding: 20px;
+          font-size: 48px;
+          line-height: 50px;
+          font-weight: 100;
+          border-radius: 10px;
+          font-family: $lightFont;
+          margin-top: 60px;
+          width: 380px;
+          border: none;
+          &:first-child {
+            margin-left: 0;
+          }
+          &:hover {
+            text-decoration: none;
+            color: $gray;
+            background-color: white;
+          }
+        }
+      } // [overlay]
+      .overlay-request {
+        .text-field {
+          border: 2px solid $gray;
+          padding: 4px;
+          border-radius: 10px;
+          text-align: right;
+          input[type="email"] {
+            font-family: $lightFont;
+            font-weight: 100;
+            color: $gray;
+            background-color: transparent;
+            border: none;
+            font-size: 36px;
+            vertical-align: middle;
+            width: 710px;
+          }
+        }
+        .left-col {
+          float: left;
+          width: 250px;
+        }
+        .right-col {
+          float: right;
+          width: 400px;
+        }
       }
     } // .box
   }
