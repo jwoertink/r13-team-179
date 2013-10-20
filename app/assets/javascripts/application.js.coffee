@@ -98,8 +98,22 @@ loadNextQuestion = ()->
     false
     
 loadFinalForm = ()->
-  $('.overlay-complete').removeClass('hidden')
-  $.scriptcam.closeCamera()
   $('#webcamModal').animate {'opacity', '0.3'}, 'slow', ()->
     $('#main').css('z-index', '102')
+    $('.overlay-complete').removeClass('hidden')
+  $.scriptcam.closeCamera()
+  $('input.btn').click ->
+    $(@).text('please wait')
+    $.delay 2500, ->
+      $('body').append('<div id="waitModal">Thanks for being patient.</div>')
+      $('#waitModal').css
+        'background-color': '#AA4D9D'
+        'display': 'block'
+        'font-size': '36px'
+        'padding': '60px'
+        'position': 'fixed'
+        'text-align': 'center'
+        'top': '0'
+        'width': '100%'
+        'z-index': '9000'
   

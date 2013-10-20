@@ -20,11 +20,12 @@ section.page3
           h3 Thanks for making a scene!
           p Your video will be available to view in the next few minutes from the link below.
           = f.hidden_field(:url_key)
-          h3= link_to(scene_url(@profile.url_key), scene_url(@profile.url_key))
+          h3= link_to(scene_url(@profile.url_key), scene_url(@profile.url_key), target: '_blank')
           p Enter your email, and we'll contact you if someone is interested in getting to know you better.
           .text-field
             = f.email_field(:email, placeholder: 'you@example.com', required: true)
             = f.submit('Send', class: 'btn')
+          small.angry note* email is required to generate your video. 
       
 - content_for(:page_bottom) do
   #webcamModal.reveal-modal.large

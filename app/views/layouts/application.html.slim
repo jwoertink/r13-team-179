@@ -30,6 +30,8 @@ body class="public"
   = yield(:page_bottom) 
   = jquery_include_tag :google 
   = javascript_cdn_tag 'swfobject', '2.2' 
-  = javascript_include_tag "application"
+  = javascript_include_tag "application" 
+  script var rumbleBannerPlacement = "bottom";
+  = javascript_include_tag "http://s0.railsrumble.com/banner.js"
   
   
