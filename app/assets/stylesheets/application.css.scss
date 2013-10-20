@@ -24,6 +24,9 @@ body {
     font-size: 36px;
     line-height: 38px;
     text-align: center;
+    width: 100%;
+    position: absolute;
+    z-index: 10000;
     &.notice {
       background-color: $green;
       color: white;
