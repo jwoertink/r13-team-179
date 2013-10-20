@@ -27,6 +27,7 @@ body class="public"
   = yield(:hidden_nav)
   #main.content
     = yield 
+  = yield(:page_bottom) 
   = jquery_include_tag :google 
   = javascript_cdn_tag 'swfobject', '2.2' 
   = javascript_include_tag "application"

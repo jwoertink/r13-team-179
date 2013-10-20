@@ -9,6 +9,7 @@ Bundler.require(:default, Rails.env)
 module Datingscene
   class Application < Rails::Application
     config.exceptions_app = self.routes
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'swfs')
     config.generators do |g|
       g.template_engine :slim
     end

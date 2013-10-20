@@ -3,6 +3,7 @@ Datingscene::Application.routes.draw do
   root 'site#index'
   get '/privacy-policy' => 'site#privacy', as: :privacy
   get '/terms-of-service' => 'site#terms', as: :terms
+  get '/s/:key' => 'scenes#show', as: :scene
   # Error Pages
   get '/404', :to => 'errors#not_found'
   get '/422', :to => 'errors#unprocessable_entity'

@@ -2,6 +2,7 @@
 @import "reset";
 @import "mixins";
 @import "page-scroll";
+@import "reveal";
 //= require_self
 
 body {
@@ -79,7 +80,7 @@ body {
     }
   } // header.site-head
   ul.onepage-pagination {
-    z-index: 100;
+    z-index: 110;
     li a:before {
       background-color: white;
     }
@@ -89,7 +90,7 @@ body {
   } // ul.onepage-pagination
   #main.content {
     position: relative;
-    z-index: 10;
+    z-index: 100;
     .page-title {
       font-size: 26px;
       line-height: 30px;
@@ -144,8 +145,35 @@ body {
         }
       }
     }
-  } // section.content
-  footer.site-foot {
-    
+  } // #main.content
+  #webcamModal {
+    #webcam {
+      display: block;
+    }
+    .progress {
+      background-color: #F7F7F7;
+      background-image: linear-gradient(to bottom, #F5F5F5, #F9F9F9);
+      background-repeat: repeat-x;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+      height: 20px;
+      overflow: hidden;
+      .bar {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        background-color: $purple;
+        background-image: linear-gradient(to bottom, lighten($purple, 10%), lighten($purple, 5%));
+        background-repeat: repeat-x;
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+        color: white;
+        float: left;
+        font-size: 12px;
+        height: 100%;
+        text-align: center;
+        transition: width 0.6s ease 0s;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        width: 0%;
+      }
+    }
   }
 }
