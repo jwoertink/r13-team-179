@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   
   def create
     @profile = Profile.new(profile_params)
-    @profile.save
+    @profile.save!
     VideoCompilationWorker.perform_async(@profile.id)
     redirect_to root_path, notice: 'Your video will be available soon'
   end
