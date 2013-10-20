@@ -1,7 +1,7 @@
 Datingscene::Application.routes.draw do
   namespace :admin do
     root 'questions#new'
-    resources :questions, only: [:index, :new, :create]
+    resources :questions
   end
   
   root 'site#index'

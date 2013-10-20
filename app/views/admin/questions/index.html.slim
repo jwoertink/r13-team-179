@@ -1,3 +1,5 @@
+.pull-right
+  = link_to('+ Add question', new_admin_question_path)
 h2 questions
 
 table
@@ -5,8 +7,10 @@ table
     th Text
     th Category
     th Video
+    th
   - @questions.each do |q|
     tr
       td= q.text
       td= q.category
       td= q.video.url
+      td= link_to('delete', admin_question_path(q), method: :delete, confirm: 'delete')
