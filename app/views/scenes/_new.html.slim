@@ -3,6 +3,7 @@ section.page3
     h2 Your Scene
     .webcam-box.text-center
       = form_for(@profile) do |f|
+        = f.hidden_field(:original_url)
         .preload
           h3 Before you can start, you'll need to allow us to access your webcam.
           = link_to('Ok I Understand', '#', class: 'ready-cam action')
@@ -20,10 +21,10 @@ section.page3
           p Your video will be available to view in the next few minutes from the link below.
           = f.hidden_field(:url_key)
           h3= link_to(scene_url(@profile.url_key), scene_url(@profile.url_key))
-          p Enter your email below and we'll contact you if someone is interested in getting to know you better.
+          p Enter your email, and we'll contact you if someone is interested in getting to know you better.
           .text-field
             = f.email_field(:email, placeholder: 'you@example.com', required: true)
-            = f.submit('Send', class: 'action')
+            = f.submit('Send', class: 'btn')
       
 - content_for(:page_bottom) do
   #webcamModal.reveal-modal.large
