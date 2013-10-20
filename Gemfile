@@ -13,8 +13,8 @@ gem 'pg', '0.17.0'
 gem 'puma', '2.6.0'
 gem 'rvm-capistrano', '1.3.0'
 gem 'sass-rails', '~> 4.0.0'
+gem 'sidekiq', '2.15.2'
 gem 'slim', '2.0.1'
-gem 'turbolinks', '1.3.0'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
