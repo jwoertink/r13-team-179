@@ -26,31 +26,45 @@ module VideoCompiler
     ''
   end
   
-  def gather_recordings
-    @selfies = {}
-    # collect tmp recording in selfies_array
+  def collect_question_videos(array_of_question_ids)
+    @clips = [] # it should be paths to videos
+    array_of_question_ids.each do |id|
+      @clips << Question.find(id).video.url
+    end
   end
   
-  def collect_question_videos
-    @clips = []
-    # Use array to collect question clips_array
+  def split_source(profile_tmp_video_path)
+    @source = profile_tmp_video_path
+    
+    `ffmpeg -i /root/#{@source} -vcodec copy -acodec copy -ss 00:00:05 -t 00:00:05 /tmp/clip-1.mp4`
+    `ffmpeg -i /root/#{@source} -vcodec copy -acodec copy -ss 00:00:05 -t 00:00:05 /tmp/clip-2.mp4`
+    `ffmpeg -i /root/#{@source} -vcodec copy -acodec copy -ss 00:00:10 -t 00:00:05 /tmp/clip-3.mp4`
+    `ffmpeg -i /root/#{@source} -vcodec copy -acodec copy -ss 00:00:15 -t 00:00:05 /tmp/clip-4.mp4`
   end
   
-  def combine_and_order_files
+  def combine_and_order_files(@clips)
     @order = []
-    @selfies.each do |s|
-      @order << Question.find(s.id) << s.video
+    @selfies = ["/tmp/clip-1.mp4", "/tmp/clip-2.mp4", "/tmp/clip-3.mp4", "/tmp/clip-4.mp4"]
+    @clips.each_with_index do |path, index|
+      @order << path << @selfies[index]
     end
-    # pair up question clips with videos
-    # join arrays to create recipe order
   end
   
-  def write_paths_to_tmp_file
-    File.open('recipe.txt', "w+") do |file|
-      @recipe_order.each do |clip|
-        file.write(clip + "\n")
-      end
+  def convert_all_media_to_ts(@order)
+    @recipe = []
+    @order.each_with_index do |path, index|
+      `ffmpeg -i #{path} -c:v libx264 -vf scale=640:480 -r 60 -c:a aac -ar 48000 -b:a 160k -strict experimental -f mpegts /tmp/#{index}.ts`
+      @recipe << "/tmp/#{index}.ts"
     end
+  end
+  
+  def create_recipe_final_ts
+    `cat 0.ts 1.ts 2.ts 3.ts 4.ts 5.ts 6.ts 7.ts > final.ts`
+    #File.open('recipe.txt', "w+") do |file|
+    #  @order.each do |clip|
+    #    file.write("file '" + clip + "'\n")
+    #  end
+    #end
   end
   
   def compile_recipe
