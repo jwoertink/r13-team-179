@@ -121,8 +121,6 @@ loadFinalForm = ()->
 
 loadVideos = ()->
   api = $(".flowplayer").flowplayer()
-  api.video.height = 480
-  api.video.width = 640
   api.bind "finish", -> $(@).siblings('.overlay-interest').show()
             
   $('.reveal-modal .cancel').click ->
