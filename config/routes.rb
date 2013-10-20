@@ -11,6 +11,8 @@ Datingscene::Application.routes.draw do
   
   resources :profiles, only: [:create]
   
+  post '/load-file' => 'videos#update', as: :load_file
+  
   # Error Pages
   get '/404', :to => 'errors#not_found'
   get '/422', :to => 'errors#unprocessable_entity'

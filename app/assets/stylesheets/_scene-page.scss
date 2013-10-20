@@ -79,7 +79,9 @@
       }
       .text-field {
         border: 2px solid $gray;
-        padding: 2px;
+        padding: 4px;
+        border-radius: 10px;
+        text-align: right;
         input[type="email"] {
           font-family: $lightFont;
           font-weight: 100;
@@ -87,9 +89,23 @@
           background-color: transparent;
           border: none;
           font-size: 36px;
+          vertical-align: middle;
+          width: 710px;
         }
-        input.action {
-          
+        input.btn {
+          font-size: 36px;
+          background-color: $purple;
+          border: none;
+          color: white;
+          font-family: $lightFont;
+          font-weight: 100;
+          border-radius: 10px;
+          line-height: 38px;
+          text-align: center;
+          width: auto;
+          padding: 15px 20px;
+          display: inline-block;
+          vertical-align: middle;
         }
       }
     }
@@ -107,6 +123,7 @@
       font-family: $lightFont;
       margin-top: 60px;
       width: 380px;
+      border: none;
       &:first-child {
         margin-left: 0;
       }

@@ -44,30 +44,35 @@ readyWebcam = ()->
     width: 640
     height: 480
     onError: (errorID, msg)->
-      console.log "Error: #{errorID}"
-      console.log msg
+      alert("Error: #{message}")
     fileName: 'question_1' # TODO: figure out which question I'm on
     connected: ()->
-      console.log 'connected to server'
       $('#webcamModal').animate {'opacity', '0.3'}, 'slow', ()->
         $('#main').css('z-index', '102')
         $('.overlay-start').removeClass('hidden')
     maximumTime: 20
     country: 'usa'
+    fileReady: (file)->
+      $('#profile_original_url').val(file)
+        
           
+$.webcamStarted = false
       
 startRecording = (currentQuestion)->
   window.clearInterval($.timer) if $.timer
-  $('#webcamModal .progress .bar').css('width', "0%")
-  # $.scriptcam.startRecording()
+  $('#webcamModal .progress .bar').css('width': "0%", 'visibility': 'visible')
+  if $.webcamStarted
+    $.scriptcam.resumeRecording()
+  else
+    $.scriptcam.startRecording()
+    $.webcamStarted = true
   $counter = 0
   $.timer = $.loop 1000, ()=>
     $counter += 1
-    console.log "#{$counter} seconds passed"
     $('#webcamModal .progress .bar').css('width', "#{20 * $counter}%")
     if $counter >= 5
-      console.log 'camera paused'
-      # $.scriptcam.pauseRecording();
+      $('#webcamModal .progress .bar').css('visibility': 'hidden')
+      $.scriptcam.pauseRecording();
       if $.questionCount >= 4
         loadFinalForm()
       else
@@ -94,4 +99,7 @@ loadNextQuestion = ()->
     
 loadFinalForm = ()->
   $('.overlay-complete').removeClass('hidden')
+  $.scriptcam.closeCamera()
+  $('#webcamModal').animate {'opacity', '0.3'}, 'slow', ()->
+    $('#main').css('z-index', '102')
   
