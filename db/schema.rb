@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019145410) do
+ActiveRecord::Schema.define(version: 20131020043822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,10 @@ ActiveRecord::Schema.define(version: 20131019145410) do
     t.string   "url_key"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "question_ids", default: [], array: true
   end
+
+  add_index "profiles", ["url_key"], name: "index_profiles_on_url_key", using: :btree
 
   create_table "questions", force: true do |t|
     t.string   "text"
@@ -42,5 +45,7 @@ ActiveRecord::Schema.define(version: 20131019145410) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "questions", ["category"], name: "index_questions_on_category", using: :btree
 
 end

@@ -2,37 +2,28 @@ section.page3
   .container
     h2 Your Scene
     .webcam-box.text-center
-      = form_tag('') do
+      = form_for(@profile) do |f|
         .preload
           h3 Before you can start, you'll need to allow us to access your webcam.
           = link_to('Ok I Understand', '#', class: 'ready-cam action')
         .overlay-start.hidden
           p Alright, so here's how easy it is to get on The DatingScene. We will ask you 4 questions, and you'll have 5 seconds to answer each one. It's that simple. 
           = link_to("Let's Do This!", '#', class: 'start-video action', 'data-reveal-id' => 'webcamModal')
-        .overlay-question.hidden data-question="1"
-          h3.question-title Question 1
-          p.text What was the last concert that you attended?
-          = link_to("I'm ready", '#', class: 'answer action')
-        .overlay-question.hidden data-question="2"
-          h3.question-title Question 2
-          p.text If you were a stalker, would you be good at it?
-          = link_to("I'm ready", '#', class: 'answer action')
-        .overlay-question.hidden data-question="3"
-          h3.question-title Question 3
-          p.text If the moon were made of spare ribs, would you eat it?
-          = link_to("I'm ready", '#', class: 'answer action')
-        .overlay-question.hidden data-question="4"
-          h3.question-title Question 4
-          p.text What are your thoughts on sushi?
-          = link_to("I'm ready", '#', class: 'answer action')
+        - @questions.each_with_index do |question, index|
+          .overlay-question.hidden data-question="#{index + 1}"
+            = hidden_field_tag('profile[question_ids][]', question.id)
+            h3.question-title Question #{index + 1}
+            p.text= question.text
+            = link_to("I'm ready", '#', class: 'answer action')
         .overlay-complete.hidden
           h3 Thanks for making a scene!
           p Your video will be available to view in the next few minutes from the link below.
-          h3= link_to(scene_url('xyz'), scene_url('xyz'))
+          = f.hidden_field(:url_key)
+          h3= link_to(scene_url(@profile.url_key), scene_url(@profile.url_key))
           p Enter your email below and we'll contact you if someone is interested in getting to know you better.
           .text-field
-            = email_field_tag(:email, '', placeholder: 'you@example.com')
-            = submit_tag('Send', class: 'action')
+            = f.email_field(:email, placeholder: 'you@example.com', required: true)
+            = f.submit('Send', class: 'action')
       
 - content_for(:page_bottom) do
   #webcamModal.reveal-modal.large

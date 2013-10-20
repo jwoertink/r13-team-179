@@ -7,7 +7,9 @@ Datingscene::Application.routes.draw do
   root 'site#index'
   get '/privacy-policy' => 'site#privacy', as: :privacy
   get '/terms-of-service' => 'site#terms', as: :terms
-  get '/s/:key' => 'scenes#show', as: :scene
+  get '/s/:key' => 'profiles#show', as: :scene
+  
+  resources :profiles, only: [:create]
   
   # Error Pages
   get '/404', :to => 'errors#not_found'

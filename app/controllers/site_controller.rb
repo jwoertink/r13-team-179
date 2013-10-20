@@ -1,6 +1,10 @@
 class SiteController < ApplicationController
   
+  # too tired to care that I'm doing everything here
   def index
+    @questions = Question.random_by_category
+    @profile = Profile.new
+    @profiles = Profile.all
   end
   
   def privacy
