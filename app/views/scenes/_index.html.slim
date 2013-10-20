@@ -9,5 +9,30 @@ section.page2
               = image_tag('default-thumb.png')
               .hover &nbsp;
             div id="sceneModal-#{profile.id}" class="reveal-modal large"
-              a href="#" class="close-reveal-modal" X
-              = video_tag([profile.video.url], controls: true, autobuffer: true, size: '640x480')
+              a href="#" class="close-reveal-modal"
+                = image_tag('close.png')
+              .flowplayer
+                video controls="controls" autobuffer="autobuffer" width="640" height="480"
+                  source src="#{profile.video.url}" type="video/mp4"
+
+              .overlay-interest
+                h3 So, what did you think?
+                = link_to("I'm Interested", "##{profile.id}", class: 'action link-block')
+                = link_to('View More Videos', "##{profile.id}", 'data-close' => "sceneModal-#{profile.id}", class: 'cancel link-block')
+              .overlay-request
+                h3 Fill out the info below and we'll put you in touch
+                = form_tag('') do
+                  .left-col
+                    .text-field
+                      = email_field_tag(:email, '', placeholder: 'you@example.com', required: true)
+                  .right-col
+                    p
+                      | Your Gender:
+                      = link_to(image_tag('female.png'), '#', class: 'set-female')
+                      = hidden_field_tag(:gender, '', id: 'set-female')
+                      = link_to(image_tag('male.png'), '#', class: 'set-male')
+                      = hidden_field_tag(:gender, '', id: 'set-male')
+                    .btn-group
+                      = link_to('Cancel', "##{profile.id}", 'data-close' => "sceneModal-#{profile.id}", class: 'link-small cancel')
+                      = submit_tag('Send', class: 'link-small action')
+                  br clear="both"

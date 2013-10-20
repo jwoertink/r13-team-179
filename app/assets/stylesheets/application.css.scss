@@ -3,7 +3,7 @@
 @import "mixins";
 @import "page-scroll";
 @import "reveal";
-@import "media-elements";
+@import "flowplayer";
 //= require_self
 
 body {
@@ -18,6 +18,16 @@ body {
   }
   .text-center {
     text-align: center;
+  }
+  .flash {
+    padding: 15px;
+    font-size: 36px;
+    line-height: 38px;
+    text-align: center;
+    &.notice {
+      background-color: $green;
+      color: white;
+    }
   }
   nav.hidden-nav {
     display: none;
