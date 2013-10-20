@@ -11,7 +11,7 @@ class Admin::QuestionsController < AdminController
   def create
     @question = Question.new(question_params)
     if @question.save
-      redirect_to admin_questions_path, notice: "Question has been saved."
+      redirect_to new_admin_question_path, notice: "Question has been saved."
     else
       flash[:error] = "Unable to save question"
       render :new
