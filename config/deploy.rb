@@ -70,7 +70,12 @@ set :branch, "master"
 role :app, LINODE_SERVER_HOSTNAME
 role :web, LINODE_SERVER_HOSTNAME
 role :db, LINODE_SERVER_HOSTNAME, :primary => true
- 
+
+# Add Symlink to Shared for Question.videos
+after 'deploy:update_code' do
+  run "ln -nfs #{shared_path}/questions #{current_path}/public/"
+end
+
 # Add Configuration Files & Compile Assets
 after 'deploy:update_code' do
 # Setup Configuration
