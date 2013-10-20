@@ -1,0 +1,14 @@
+h2 New Question  
+.form-box
+  = form_for([:admin, @question], html: {multipart: true}) do |f|
+    p
+      = f.label(:text)
+      = f.text_field :text 
+    p
+      = f.label(:category)
+      = f.text_field :category 
+    p
+      = f.label(:video)
+      = f.file_field :video
+      
+    p= f.submit('Upload')

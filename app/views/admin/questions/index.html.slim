@@ -1,0 +1,12 @@
+h2 questions
+
+table
+  tr
+    th Text
+    th Category
+    th Video
+  - @questions.each do |q|
+    tr
+      td= q.text
+      td= q.category
+      td= q.video.url
