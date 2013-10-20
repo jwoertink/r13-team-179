@@ -11,9 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20131019145410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "interests", force: true do |t|
+    t.string   "email"
+    t.string   "gender"
+    t.integer  "profile_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "interests", ["profile_id"], name: "index_interests_on_profile_id", using: :btree
+
+  create_table "profiles", force: true do |t|
+    t.string   "ip_address"
+    t.string   "email"
+    t.string   "video"
+    t.string   "url_key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", force: true do |t|
+    t.string   "text"
+    t.string   "category"
+    t.string   "video"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

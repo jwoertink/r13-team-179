@@ -3,10 +3,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 gem 'carrierwave', '0.9.0'
+gem 'carrierwave-aws', '0.3.2'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'capistrano-foreman'
 gem 'foreman'
-gem "fog", "1.16.0"
 gem 'jquery-rails-cdn', '1.0.1'
 gem 'kaminari', '0.14.1'
 gem 'pg', '0.17.0'

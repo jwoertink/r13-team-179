@@ -16,6 +16,8 @@
 
 /config/database.yml
 
+/public/uploads
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
