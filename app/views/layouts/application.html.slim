@@ -26,6 +26,7 @@ head
 body class="public"
   = yield(:hidden_nav)
   #main.content
+    = flash_message
     = yield 
   = yield(:page_bottom) 
   = jquery_include_tag :google 

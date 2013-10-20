@@ -19,6 +19,16 @@ body {
   .text-center {
     text-align: center;
   }
+  .flash {
+    padding: 15px;
+    font-size: 36px;
+    line-height: 38px;
+    text-align: center;
+    &.notice {
+      background-color: $green;
+      color: white;
+    }
+  }
   nav.hidden-nav {
     display: none;
     position: fixed;
